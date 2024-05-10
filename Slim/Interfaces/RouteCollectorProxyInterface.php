@@ -14,12 +14,18 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
+/**
+ * @psalm-template TContainerInterface of (ContainerInterface|null)
+ */
 interface RouteCollectorProxyInterface
 {
     public function getResponseFactory(): ResponseFactoryInterface;
 
     public function getCallableResolver(): CallableResolverInterface;
 
+    /**
+     * @psalm-return TContainerInterface
+     */
     public function getContainer(): ?ContainerInterface;
 
     public function getRouteCollector(): RouteCollectorInterface;

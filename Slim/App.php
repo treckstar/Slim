@@ -30,7 +30,10 @@ use Slim\Routing\RouteResolver;
 use Slim\Routing\RouteRunner;
 
 use function strtoupper;
-
+/**
+ * @psalm-template TContainerInterface of (ContainerInterface|null)
+ * @template-extends RouteCollectorProxy<TContainerInterface>
+ */
 class App extends RouteCollectorProxy implements RequestHandlerInterface
 {
     /**
@@ -44,6 +47,9 @@ class App extends RouteCollectorProxy implements RequestHandlerInterface
 
     protected MiddlewareDispatcherInterface $middlewareDispatcher;
 
+    /**
+     * @psalm-param TContainerInterface $container
+     */
     public function __construct(
         ResponseFactoryInterface $responseFactory,
         ?ContainerInterface $container = null,
