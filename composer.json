@@ -85,11 +85,13 @@
         "test": [
             "@phpunit",
             "@phpcs",
-            "@phpstan"
+            "@phpstan",
+            "@psalm"
         ],
         "phpunit": "phpunit",
         "phpcs": "phpcs",
-        "phpstan": "phpstan --memory-limit=-1"
+        "phpstan": "phpstan --memory-limit=-1",
+        "psalm": "psalm"
     },
     "suggest": {
         "ext-simplexml": "Needed to support XML format in BodyParsingMiddleware",

@@ -44,6 +44,11 @@ class AppFactory
 
     protected static bool $slimHttpDecoratorsAutomaticDetectionEnabled = true;
 
+    /**
+     * @template TContainerInterface of (ContainerInterface|null)
+     * @param TContainerInterface $container
+     * @return (App<TContainerInterface>|App<ContainerInterface|null>)
+     */
     public static function create(
         ?ResponseFactoryInterface $responseFactory = null,
         ?ContainerInterface $container = null,
@@ -63,6 +68,11 @@ class AppFactory
         );
     }
 
+    /**
+     * @template TContainerInterface of (ContainerInterface)
+     * @param TContainerInterface $container
+     * @return App<TContainerInterface>
+     */
     public static function createFromContainer(ContainerInterface $container): App
     {
         $responseFactory = $container->has(ResponseFactoryInterface::class)

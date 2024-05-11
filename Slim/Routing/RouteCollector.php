@@ -244,6 +244,9 @@ class RouteCollector implements RouteCollectorInterface
         return new RouteGroup($pattern, $callable, $this->callableResolver, $routeCollectorProxy);
     }
 
+    /**
+     * @return RouteCollectorProxyInterface<ContainerInterface|null>
+     */
     protected function createProxy(string $pattern): RouteCollectorProxyInterface
     {
         return new RouteCollectorProxy(

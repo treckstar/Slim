@@ -15,7 +15,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
- * @psalm-template TContainerInterface of (ContainerInterface|null)
+ * @template TContainerInterface of (ContainerInterface|null)
  */
 interface RouteCollectorProxyInterface
 {
@@ -24,7 +24,7 @@ interface RouteCollectorProxyInterface
     public function getCallableResolver(): CallableResolverInterface;
 
     /**
-     * @psalm-return TContainerInterface
+     * @return TContainerInterface
      */
     public function getContainer(): ?ContainerInterface;
 
@@ -37,6 +37,7 @@ interface RouteCollectorProxyInterface
 
     /**
      * Set the RouteCollectorProxy's base path
+     * @return RouteCollectorProxyInterface<TContainerInterface>
      */
     public function setBasePath(string $basePath): RouteCollectorProxyInterface;
 

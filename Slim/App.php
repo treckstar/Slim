@@ -31,7 +31,7 @@ use Slim\Routing\RouteRunner;
 
 use function strtoupper;
 /**
- * @psalm-template TContainerInterface of (ContainerInterface|null)
+ * @template TContainerInterface of (ContainerInterface|null)
  * @template-extends RouteCollectorProxy<TContainerInterface>
  */
 class App extends RouteCollectorProxy implements RequestHandlerInterface
@@ -48,7 +48,7 @@ class App extends RouteCollectorProxy implements RequestHandlerInterface
     protected MiddlewareDispatcherInterface $middlewareDispatcher;
 
     /**
-     * @psalm-param TContainerInterface $container
+     * @param TContainerInterface $container
      */
     public function __construct(
         ResponseFactoryInterface $responseFactory,
@@ -95,6 +95,7 @@ class App extends RouteCollectorProxy implements RequestHandlerInterface
 
     /**
      * @param MiddlewareInterface|string|callable $middleware
+     * @return App<TContainerInterface>
      */
     public function add($middleware): self
     {
@@ -104,6 +105,7 @@ class App extends RouteCollectorProxy implements RequestHandlerInterface
 
     /**
      * @param MiddlewareInterface $middleware
+     * @return App<TContainerInterface>
      */
     public function addMiddleware(MiddlewareInterface $middleware): self
     {
