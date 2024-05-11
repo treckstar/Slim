@@ -183,8 +183,10 @@ class MiddlewareDispatcher implements MiddlewareDispatcherInterface
                     $instance = null;
                     $method = null;
 
-                    if(!CallableResolver::$callablePattern) {
-                        throw new RuntimeException("CallableResolver::\$callablePattern was modified to an invalid value");
+                    if (!CallableResolver::$callablePattern) {
+                        throw new RuntimeException(
+                            "CallableResolver::\$callablePattern was modified to an invalid value"
+                        );
                     }
                     // Check for Slim callable as `class:method`
                     if (preg_match(CallableResolver::$callablePattern, $resolved, $matches)) {
