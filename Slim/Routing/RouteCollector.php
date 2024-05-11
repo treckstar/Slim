@@ -32,6 +32,7 @@ use function is_writable;
 /**
  * RouteCollector is used to collect routes and route groups
  * as well as generate paths and URLs relative to its environment
+ * @template TContainerInterface of (ContainerInterface|null)
  */
 class RouteCollector implements RouteCollectorInterface
 {
@@ -81,6 +82,9 @@ class RouteCollector implements RouteCollectorInterface
 
     protected ResponseFactoryInterface $responseFactory;
 
+    /**
+     * @param TContainerInterface $container
+     */
     public function __construct(
         ResponseFactoryInterface $responseFactory,
         CallableResolverInterface $callableResolver,
@@ -245,10 +249,11 @@ class RouteCollector implements RouteCollectorInterface
     }
 
     /**
-     * @return RouteCollectorProxyInterface<ContainerInterface|null>
+     * @return RouteCollectorProxyInterface<TContainerInterface>
      */
     protected function createProxy(string $pattern): RouteCollectorProxyInterface
     {
+        /** @var RouteCollectorProxyInterface<TContainerInterface> */
         return new RouteCollectorProxy(
             $this->responseFactory,
             $this->callableResolver,

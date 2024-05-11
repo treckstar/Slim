@@ -28,6 +28,9 @@ use function is_string;
 use function preg_match;
 use function sprintf;
 
+/**
+ * @template TContainerInterface of (ContainerInterface|null)
+ */
 class MiddlewareDispatcher implements MiddlewareDispatcherInterface
 {
     /**
@@ -37,8 +40,12 @@ class MiddlewareDispatcher implements MiddlewareDispatcherInterface
 
     protected ?CallableResolverInterface $callableResolver;
 
+    /** @var TContainerInterface $container */
     protected ?ContainerInterface $container;
 
+    /**
+     * @param TContainerInterface $container
+     */
     public function __construct(
         RequestHandlerInterface $kernel,
         ?CallableResolverInterface $callableResolver = null,
@@ -131,6 +138,7 @@ class MiddlewareDispatcher implements MiddlewareDispatcherInterface
      * Middleware are organized as a stack. That means middleware
      * that have been added before will be executed after the newly
      * added one (last in, first out).
+     * @return MiddlewareDispatcher<TContainerInterface>
      */
     public function addDeferred(string $middleware): self
     {
@@ -238,6 +246,7 @@ class MiddlewareDispatcher implements MiddlewareDispatcherInterface
      * Middleware are organized as a stack. That means middleware
      * that have been added before will be executed after the newly
      * added one (last in, first out).
+     * @return MiddlewareDispatcher<TContainerInterface>
      */
     public function addCallable(callable $middleware): self
     {

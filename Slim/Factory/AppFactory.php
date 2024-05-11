@@ -47,7 +47,7 @@ class AppFactory
     /**
      * @template TContainerInterface of (ContainerInterface|null)
      * @param TContainerInterface $container
-     * @return (App<TContainerInterface>|App<ContainerInterface|null>)
+     * @return (TContainerInterface is ContainerInterface ? App<TContainerInterface> : App<ContainerInterface|null>)
      */
     public static function create(
         ?ResponseFactoryInterface $responseFactory = null,

@@ -69,7 +69,7 @@ class RouteRunner implements RequestHandlerInterface
             );
         }
 
-        /** @var Route $route */
+        /** @var Route<\Psr\Container\ContainerInterface|null> $route */
         $route = $request->getAttribute(RouteContext::ROUTE);
         return $route->run($request);
     }

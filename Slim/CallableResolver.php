@@ -26,12 +26,19 @@ use function json_encode;
 use function preg_match;
 use function sprintf;
 
+/**
+ * @template TContainerInterface of (ContainerInterface|null)
+ */
 final class CallableResolver implements AdvancedCallableResolverInterface
 {
     public static string $callablePattern = '!^([^\:]+)\:([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)$!';
 
+    /** @var TContainerInterface $container */
     private ?ContainerInterface $container;
 
+    /**
+     * @param TContainerInterface $container
+     */
     public function __construct(?ContainerInterface $container = null)
     {
         $this->container = $container;
