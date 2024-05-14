@@ -34,6 +34,7 @@ use function in_array;
 use function is_array;
 
 /**
+ * @api
  * @template TContainerInterface of (ContainerInterface|null)
  */
 class Route implements RouteInterface, RequestHandlerInterface
@@ -328,7 +329,6 @@ class Route implements RouteInterface, RequestHandlerInterface
         $inner = $this->middlewareDispatcher;
         $this->middlewareDispatcher = new MiddlewareDispatcher($inner, $this->callableResolver, $this->container);
 
-        /** @var RouteGroupInterface $group */
         foreach (array_reverse($this->groups) as $group) {
             $group->appendMiddlewareToDispatcher($this->middlewareDispatcher);
         }

@@ -15,6 +15,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
+ * @api
  * @template TContainerInterface of (ContainerInterface|null)
  */
 interface RouteCollectorProxyInterface

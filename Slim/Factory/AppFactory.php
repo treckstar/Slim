@@ -24,6 +24,7 @@ use Slim\Interfaces\Psr17FactoryProviderInterface;
 use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Interfaces\RouteResolverInterface;
 
+/** @api */
 class AppFactory
 {
     protected static ?Psr17FactoryProviderInterface $psr17FactoryProvider = null;

@@ -29,6 +29,7 @@ use function preg_match;
 use function sprintf;
 
 /**
+ * @api
  * @template TContainerInterface of (ContainerInterface|null)
  */
 class MiddlewareDispatcher implements MiddlewareDispatcherInterface

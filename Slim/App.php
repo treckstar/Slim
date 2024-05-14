@@ -32,6 +32,7 @@ use Slim\Routing\RouteRunner;
 use function strtoupper;
 
 /**
+ * @api
  * @template TContainerInterface of (ContainerInterface|null)
  * @template-extends RouteCollectorProxy<TContainerInterface>
  */

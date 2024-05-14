@@ -91,7 +91,7 @@
         "phpunit": "phpunit",
         "phpcs": "phpcs",
         "phpstan": "phpstan --memory-limit=-1",
-        "psalm": "psalm"
+        "psalm": "psalm --no-cache"
     },
     "suggest": {
         "ext-simplexml": "Needed to support XML format in BodyParsingMiddleware",
