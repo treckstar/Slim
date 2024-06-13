@@ -353,6 +353,35 @@ class ErrorHandlerTest extends TestCase
         $handler->__invoke($request, $exception, false, true, true);
     }
 
+    public function testWriteToErrorLogDoesNotShowTipIfErrorLogRendererIsNotPlainText()
+    {
+        $request = $this
+            ->createServerRequest('/', 'GET')
+            ->withHeader('Accept', 'application/json');
+
+        $logger = $this->getMockLogger();
+
+        $handler = new ErrorHandler(
+            $this->getCallableResolver(),
+            $this->getResponseFactory(),
+            $logger
+        );
+
+        $handler->setLogErrorRenderer(HtmlErrorRenderer::class);
+
+        $logger->expects(self::once())
+            ->method('error')
+            ->willReturnCallback(static function (string $error) {
+                self::assertStringNotContainsString(
+                    'set "displayErrorDetails" to true in the ErrorHandler constructor',
+                    $error
+                );
+            });
+
+        $exception = new HttpNotFoundException($request);
+        $handler->__invoke($request, $exception, false, true, true);
+    }
+
     public function testDefaultErrorRenderer()
     {
         $request = $this

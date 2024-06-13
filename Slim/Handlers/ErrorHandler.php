@@ -260,7 +260,7 @@ class ErrorHandler implements ErrorHandlerInterface
     {
         $renderer = $this->callableResolver->resolve($this->logErrorRenderer);
         $error = $renderer($this->exception, $this->logErrorDetails);
-        if (!$this->displayErrorDetails) {
+        if ($this->logErrorRenderer === PlainTextErrorRenderer::class && !$this->displayErrorDetails) {
             $error .= "\nTips: To display error details in HTTP response ";
             $error .= 'set "displayErrorDetails" to true in the ErrorHandler constructor.';
         }
