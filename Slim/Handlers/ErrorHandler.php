@@ -43,6 +43,7 @@ use function preg_match;
  *
  * It outputs the error message and diagnostic information in one of the following formats:
  * JSON, XML, Plain Text or HTML based on the Accept header.
+ * @api
  */
 class ErrorHandler implements ErrorHandlerInterface
 {
