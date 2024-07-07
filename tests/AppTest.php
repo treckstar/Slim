@@ -1143,6 +1143,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1183,6 +1184,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1223,6 +1225,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1263,6 +1266,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1308,6 +1312,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1352,6 +1357,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1494,6 +1500,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1538,6 +1545,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1584,6 +1592,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1624,6 +1633,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1665,6 +1675,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
         $streamProphecy->read(1)->willReturn('_');
         $streamProphecy->read('11')->will(function () {
@@ -1673,7 +1684,7 @@ class AppTest extends TestCase
         });
         $streamProphecy->eof()->willReturn(false);
         $streamProphecy->isSeekable()->willReturn(true);
-        $streamProphecy->rewind()->willReturn(true);
+        $streamProphecy->rewind()->shouldBeCalled();
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
         $responseProphecy->getBody()->willReturn($streamProphecy->reveal());
@@ -1717,15 +1728,16 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
         $streamProphecy->read(1)->willReturn('_');
-        $streamProphecy->read('11')->will(function () {
+        $streamProphecy->read(11)->will(function () {
             $this->eof()->willReturn(true);
             return $this->reveal()->__toString();
         });
         $streamProphecy->eof()->willReturn(false);
         $streamProphecy->isSeekable()->willReturn(true);
-        $streamProphecy->rewind()->willReturn(true);
+        $streamProphecy->rewind()->shouldBeCalled();
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
         $responseProphecy->getBody()->willReturn($streamProphecy->reveal());
@@ -1757,6 +1769,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -1813,6 +1826,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseHeaders = [];
@@ -1978,6 +1992,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -2032,6 +2047,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
@@ -2086,6 +2102,7 @@ class AppTest extends TestCase
             $body = $this->reveal()->__toString();
             $body .= $args[0];
             $this->__toString()->willReturn($body);
+            return 0;
         });
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
