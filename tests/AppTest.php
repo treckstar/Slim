@@ -1684,7 +1684,7 @@ class AppTest extends TestCase
         });
         $streamProphecy->eof()->willReturn(false);
         $streamProphecy->isSeekable()->willReturn(true);
-        $streamProphecy->rewind();
+        $streamProphecy->rewind()->shouldBeCalled();
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
         $responseProphecy->getBody()->willReturn($streamProphecy->reveal());
@@ -1731,13 +1731,13 @@ class AppTest extends TestCase
             return 0;
         });
         $streamProphecy->read(1)->willReturn('_');
-        $streamProphecy->read('11')->will(function () {
+        $streamProphecy->read(11)->will(function () {
             $this->eof()->willReturn(true);
             return $this->reveal()->__toString();
         });
         $streamProphecy->eof()->willReturn(false);
         $streamProphecy->isSeekable()->willReturn(true);
-        $streamProphecy->rewind();
+        $streamProphecy->rewind()->shouldBeCalled();;
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
         $responseProphecy->getBody()->willReturn($streamProphecy->reveal());
