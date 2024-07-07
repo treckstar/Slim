@@ -1737,7 +1737,7 @@ class AppTest extends TestCase
         });
         $streamProphecy->eof()->willReturn(false);
         $streamProphecy->isSeekable()->willReturn(true);
-        $streamProphecy->rewind()->shouldBeCalled();;
+        $streamProphecy->rewind()->shouldBeCalled();
 
         $responseProphecy = $this->prophesize(ResponseInterface::class);
         $responseProphecy->getBody()->willReturn($streamProphecy->reveal());
