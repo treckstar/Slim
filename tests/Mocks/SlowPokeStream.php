@@ -34,7 +34,7 @@ class SlowPokeStream implements StreamInterface
         $this->amountToRead = self::SIZE;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $content = '';
         while (!$this->eof()) {
@@ -43,7 +43,7 @@ class SlowPokeStream implements StreamInterface
         return $content;
     }
 
-    public function close()
+    public function close(): void
     {
     }
 
@@ -52,12 +52,12 @@ class SlowPokeStream implements StreamInterface
         throw new Exception('not implemented');
     }
 
-    public function eof()
+    public function eof(): bool
     {
         return $this->amountToRead === 0;
     }
 
-    public function getContents()
+    public function getContents(): string
     {
         throw new Exception('not implemented');
     }
@@ -67,27 +67,27 @@ class SlowPokeStream implements StreamInterface
         throw new Exception('not implemented');
     }
 
-    public function getSize()
+    public function getSize(): ?int
     {
         return null;
     }
 
-    public function isReadable()
+    public function isReadable(): bool
     {
         return true;
     }
 
-    public function isSeekable()
+    public function isSeekable(): bool
     {
         return false;
     }
 
-    public function isWritable()
+    public function isWritable(): bool
     {
         return false;
     }
 
-    public function read($length)
+    public function read($length): string
     {
         usleep(1);
         $size = min($this->amountToRead, self::CHUNK_SIZE, $length);
@@ -95,23 +95,23 @@ class SlowPokeStream implements StreamInterface
         return str_repeat('.', $size);
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         throw new Exception('not implemented');
     }
 
-    public function seek($offset, $whence = SEEK_SET)
+    public function seek($offset, $whence = SEEK_SET): void
     {
         throw new Exception('not implemented');
     }
 
-    public function tell()
+    public function tell(): int
     {
         throw new Exception('not implemented');
     }
 
-    public function write($string)
+    public function write($string): int
     {
-        return $string;
+        return strlen($string);
     }
 }
