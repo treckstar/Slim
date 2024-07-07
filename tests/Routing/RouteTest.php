@@ -72,7 +72,7 @@ class RouteTest extends TestCase
             ->will(function ($args) use ($value) {
                 $value .= $args[0];
                 $this->__toString()->willReturn($value);
-                return 0;
+                return strlen($value);
             });
 
         $streamProphecy
@@ -821,7 +821,7 @@ class RouteTest extends TestCase
             ->will(function ($args) use ($value) {
                 $value .= $args[0];
                 $this->__toString()->willReturn($value);
-                return 0;
+                return strlen($value);
             });
 
         $streamProphecy
